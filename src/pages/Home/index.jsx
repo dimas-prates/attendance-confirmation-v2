@@ -21,6 +21,13 @@ export function Home() {
   }
   return (
     <div className="container">
+      <header>
+        <h1>Attendance List</h1>
+        <div>
+          <strong>Name</strong>
+          <img src="https://github.com/dimas-prates.png" alt="profile pic" />
+        </div>
+      </header>
       {/* <h1>Attendance Confirmation</h1> */}
       <h1>Name: {studentName}</h1>
       <input
@@ -35,7 +42,7 @@ export function Home() {
       </button>
 
       {students.map((student) => (
-        <Card name={student.name} time={student.time} />
+        <Card name={student.name} time={student.time} key={student.time} />
       ))}
     </div>
   );
