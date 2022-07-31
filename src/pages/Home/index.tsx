@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 
-import { Card } from "../../components/Card/index";
+import { Card, CardProps } from "../../components/Card/index";
 export function Home() {
   const [studentName, setStudentName] = useState();
-  const [students, setStudents] = useState([]);
+  const [students, setStudents] = useState<CardProps[]>([]);
   const [user, setUser] = useState({ name: "", avatar: "" });
   function handleAddStudent() {
     const newStudent = {
@@ -72,7 +72,9 @@ export function Home() {
       </button>
 
       {students.map((student) => (
-        <Card name={student.name} time={student.time} key={student.time} />
+        <Card name={student.name} 
+        time={student.time} 
+        key={student.time} />
       ))}
     </div>
   );
