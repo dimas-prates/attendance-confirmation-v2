@@ -2,7 +2,7 @@ import "./styles.css";
 // Destructuring using props
 // export function Card({name, time}) {
 
-type CardProps = {
+export type CardProps = {
   name: string;
   time: string;
 }
