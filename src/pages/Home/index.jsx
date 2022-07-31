@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 
 import { Card } from "../../components/Card/index";
 export function Home() {
   const [studentName, setStudentName] = useState();
   const [students, setStudents] = useState([]);
-
+  const [user, setUser] = useState({ name: "", avatar: "" });
   function handleAddStudent() {
     const newStudent = {
       name: studentName,
@@ -19,13 +19,31 @@ export function Home() {
     // setStudents([newStudent]);
     setStudents((prevState) => [...prevState, newStudent]);
   }
+
+  // useEffect(() => {
+  //   console.log("useEffect ran.");
+  // }, [students]);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users/dimas-prates")
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data.name,data.avatar_url)
+        setUser({
+          name: data.name,
+          avatar: data.avatar_url,
+        });
+        // console.log(user)
+      });
+  }, []);
+
   return (
     <div className="container">
       <header>
         <h1>Attendance List</h1>
         <div>
-          <strong>Name</strong>
-          <img src="https://github.com/dimas-prates.png" alt="profile pic" />
+          <strong>{user.name}</strong>
+          <img src={user.avatar} alt="profile pic" />
         </div>
       </header>
       {/* <h1>Attendance Confirmation</h1> */}
