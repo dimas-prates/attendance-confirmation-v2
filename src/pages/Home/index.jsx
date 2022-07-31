@@ -24,17 +24,29 @@ export function Home() {
   //   console.log("useEffect ran.");
   // }, [students]);
 
+  // useEffect(() => {
+  //   fetch("https://api.github.com/users/dimas-prates")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       // console.log(data.name,data.avatar_url)
+  //       setUser({
+  //         name: data.name,
+  //         avatar: data.avatar_url,
+  //       });
+  //       // console.log(user)
+  //     });
+  // }, []);
+
   useEffect(() => {
-    fetch("https://api.github.com/users/dimas-prates")
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data.name,data.avatar_url)
-        setUser({
-          name: data.name,
-          avatar: data.avatar_url,
-        });
-        // console.log(user)
+    async function fetchData() {
+      const response = await fetch("https://api.github.com/users/dimas-prates");
+      const data = await response.json();
+      setUser({
+        name: data.name,
+        avatar: data.avatar_url,
       });
+    }
+    fetchData();
   }, []);
 
   return (
