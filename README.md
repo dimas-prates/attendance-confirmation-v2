@@ -1,1 +1,0 @@
-# Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/d3b3ccd6-926f-4a83-b383-34a16aca9657/deploy-status)](https://app.netlify.com/sites/attendance-confirmation-v2/deploys)
